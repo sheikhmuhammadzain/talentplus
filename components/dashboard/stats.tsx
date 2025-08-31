@@ -1,5 +1,6 @@
 "use client"
 
+import { useMemo, useState } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
@@ -28,6 +29,24 @@ export function Stats() {
     { month: "May", views: 280, clicks: 102, applications: 32 },
     { month: "Jun", views: 320, clicks: 125, applications: 38 },
   ]
+
+  const [timeframe, setTimeframe] = useState<"1month" | "3months" | "6months" | "1year">("6months")
+
+  const filteredMonthlyData = useMemo(() => {
+    switch (timeframe) {
+      case "1month":
+        return monthlyData.slice(-1)
+      case "3months":
+        return monthlyData.slice(-3)
+      case "6months":
+        return monthlyData
+      case "1year":
+        // Demo data only contains 6 months; in real data, expand to 12 months.
+        return monthlyData
+      default:
+        return monthlyData
+    }
+  }, [timeframe, monthlyData])
 
   const jobPerformanceData = [
     { job: "Frontend Dev", views: 145, applications: 23 },
@@ -85,7 +104,7 @@ export function Stats() {
           <h1 className="text-3xl font-bold">Analytics & Stats</h1>
           <p className="text-muted-foreground">Track your job ads performance and user engagement</p>
         </div>
-        <Select defaultValue="6months">
+        <Select value={timeframe} onValueChange={(v) => setTimeframe(v as any)}>
           <SelectTrigger className="w-48">
             <SelectValue />
           </SelectTrigger>
@@ -136,7 +155,7 @@ export function Stats() {
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
-              <LineChart data={monthlyData}>
+              <LineChart data={filteredMonthlyData}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="month" />
                 <YAxis />

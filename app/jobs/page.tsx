@@ -128,13 +128,7 @@ export default function JobsPage() {
   }
 
   return (
-    <PageLayout containerClassName="">
-        {/* Back Button */}
-        <div className="mb-6">
-          <Button variant="ghost" asChild className="p-0 h-auto font-normal text-muted-foreground hover:text-foreground">
-            
-          </Button>
-        </div>
+    <PageLayout>
 
         {/* Search Header */}
         <div className="mb-8">
