@@ -12,7 +12,7 @@ export default function DashboardPage() {
   return (
     <div className="min-h-screen">
       <Header />
-      <div className="flex">
+      <div className="flex pt-24">
         <DashboardSidebar />
         <main className="flex-1 p-6">
           {/* Back Button */}

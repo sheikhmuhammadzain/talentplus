@@ -179,7 +179,7 @@ export default function DealsPage() {
     <div className="min-h-screen">
       <Header />
 
-      <main className="container mx-auto px-4 py-8">
+      <main className="pt-24 container mx-auto px-4 py-8">
         {/* Search Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold mb-4">Best Deals & Price Comparison</h1>
@@ -311,7 +311,7 @@ export default function DealsPage() {
                   variant={viewMode === "grid" ? "default" : "outline"}
                   size="sm"
                   onClick={() => setViewMode("grid")}
-                  className={viewMode === "outline" ? "bg-transparent" : ""}
+                  className={viewMode === "grid" ? "" : "bg-transparent"}
                 >
                   <Grid3X3 className="h-4 w-4" />
                 </Button>
@@ -319,7 +319,7 @@ export default function DealsPage() {
                   variant={viewMode === "list" ? "default" : "outline"}
                   size="sm"
                   onClick={() => setViewMode("list")}
-                  className={viewMode === "outline" ? "bg-transparent" : ""}
+                  className={viewMode === "grid" ? "" : "bg-transparent"}
                 >
                   <List className="h-4 w-4" />
                 </Button>

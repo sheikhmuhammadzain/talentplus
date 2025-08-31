@@ -132,10 +132,7 @@ export default function JobsPage() {
         {/* Back Button */}
         <div className="mb-6">
           <Button variant="ghost" asChild className="p-0 h-auto font-normal text-muted-foreground hover:text-foreground">
-            <Link href="/" className="inline-flex items-center">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Home
-            </Link>
+            
           </Button>
         </div>
 

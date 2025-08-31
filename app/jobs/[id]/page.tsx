@@ -135,7 +135,7 @@ Ready to make your mark in tech? Apply now and let's build something amazing tog
     <div className="min-h-screen">
       <Header />
 
-      <main className="container mx-auto px-4 py-8">
+      <main className="pt-24 container mx-auto px-4 py-8">
         {/* Back Button */}
         <div className="mb-6">
           <Button variant="ghost" asChild className="p-0 h-auto font-normal text-muted-foreground hover:text-foreground">

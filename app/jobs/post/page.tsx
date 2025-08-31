@@ -69,7 +69,7 @@ export default function PostJobPage() {
     <div className="min-h-screen">
       <Header />
 
-      <main className="container mx-auto px-4 py-8">
+      <main className="pt-24 container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
           {/* Progress Steps */}
           <div className="flex items-center justify-center mb-8">

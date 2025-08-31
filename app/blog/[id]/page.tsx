@@ -315,7 +315,7 @@ export default async function BlogPostPage({ params }: { params: { id: string } 
     return (
       <div className="min-h-screen">
         <Header />
-        <main className="container mx-auto px-4 py-16 text-center">
+        <main className="pt-24 container mx-auto px-4 py-16 text-center">
           <h1 className="text-4xl font-bold mb-4">Post Not Found</h1>
           <p className="text-muted-foreground mb-8">The blog post you're looking for doesn't exist.</p>
           <a href="/blog" className="text-accent hover:underline">
@@ -330,7 +330,7 @@ export default async function BlogPostPage({ params }: { params: { id: string } 
   return (
     <div className="min-h-screen">
       <Header />
-      <main>
+      <main className="pt-24">
         <BlogPost post={post} />
       </main>
       <Footer />
