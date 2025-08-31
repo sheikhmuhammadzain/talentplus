@@ -263,7 +263,7 @@ export function Header() {
                     </div>
 
                     {/* Mobile Actions */}
-                    <div className="space-y-3 pt-4 border-t border-white/10 dark:border-gray-800/30">
+                    <div className="space-y-3 pt-4 border-t border-border/60">
                       <Link href="/saved" onClick={() => setIsOpen(false)}>
                         <Button variant="ghost" className="justify-start w-full h-10 text-foreground hover:bg-accent hover:text-accent-foreground">
                           <Heart className="h-4 w-4 mr-3" />
@@ -279,7 +279,7 @@ export function Header() {
                               Dashboard
                             </Button>
                           </Link>
-                          <div className="flex items-center space-x-3 p-3 border border-white/10 dark:border-gray-800/30 rounded-lg bg-accent/10 backdrop-blur-sm">
+                          <div className="flex items-center space-x-3 p-3 border border-border/60 rounded-lg bg-accent/10 backdrop-blur-sm">
                             <Avatar className="h-10 w-10">
                               <AvatarImage src={user.avatar || "/placeholder.svg"} alt={user.name} />
                               <AvatarFallback className="bg-primary text-primary-foreground">
@@ -293,7 +293,7 @@ export function Header() {
                           </div>
                           <Button
                             variant="outline"
-                            className="justify-start w-full h-10 bg-transparent text-foreground border-white/10 dark:border-gray-800/30 hover:bg-accent hover:text-accent-foreground"
+                            className="justify-start w-full h-10 bg-transparent text-foreground border-border/60 hover:bg-accent hover:text-accent-foreground"
                             onClick={() => {
                               logout()
                               setIsOpen(false)
@@ -306,7 +306,7 @@ export function Header() {
                       ) : (
                         <div className="space-y-2">
                           <Link href="/login" onClick={() => setIsOpen(false)}>
-                            <Button variant="outline" className="justify-start w-full h-10 bg-transparent text-foreground border-white/10 dark:border-gray-800/30 hover:bg-accent hover:text-accent-foreground">
+                            <Button variant="outline" className="justify-start w-full h-10 bg-transparent text-foreground border-border/60 hover:bg-accent hover:text-accent-foreground">
                               <User className="h-4 w-4 mr-3" />
                               Login
                             </Button>
