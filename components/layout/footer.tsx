@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Facebook, Twitter, Instagram, Linkedin, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -38,8 +39,13 @@ export function Footer() {
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center space-x-2 mb-4">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground font-bold">
-                T+
+              <div className="w-16 h-16">
+                <Image
+                  src="/logo.png"
+                  width={68}
+                  height={68}
+                  alt="Logo"
+                />
               </div>
               <span className="text-xl font-bold">WIRsuchen</span>
             </Link>
