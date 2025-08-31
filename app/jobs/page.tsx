@@ -129,7 +129,6 @@ export default function JobsPage() {
 
   return (
     <PageLayout>
-
         {/* Search Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold mb-4">Find Your Dream Job</h1>
@@ -165,9 +164,9 @@ export default function JobsPage() {
           </div>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-8">
+        <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
           {/* Filters Sidebar */}
-          <div className="lg:w-80">
+          <div className="lg:w-80 w-full">
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center">
@@ -301,35 +300,35 @@ export default function JobsPage() {
                             </Button>
                           </div>
 
-                          <div className="flex flex-wrap items-center gap-4 mt-3 text-sm text-muted-foreground">
-                            <div className="flex items-center">
-                              <MapPin className="h-4 w-4 mr-1" />
-                              {job.location}
+                          <div className="flex flex-wrap items-center gap-2 sm:gap-4 mt-3 text-sm text-muted-foreground">
+                            <div className="flex items-center min-w-0">
+                              <MapPin className="h-4 w-4 mr-1 flex-shrink-0" />
+                              <span className="truncate">{job.location}</span>
+                            </div>
+                            <div className="flex items-center min-w-0">
+                              <Euro className="h-4 w-4 mr-1 flex-shrink-0" />
+                              <span className="truncate">{job.salary}</span>
                             </div>
                             <div className="flex items-center">
-                              <Euro className="h-4 w-4 mr-1" />
-                              {job.salary}
-                            </div>
-                            <div className="flex items-center">
-                              <Briefcase className="h-4 w-4 mr-1" />
+                              <Briefcase className="h-4 w-4 mr-1 flex-shrink-0" />
                               {job.type}
                             </div>
                             <div className="flex items-center">
-                              <Clock className="h-4 w-4 mr-1" />
+                              <Clock className="h-4 w-4 mr-1 flex-shrink-0" />
                               {job.postedDate}
                             </div>
                           </div>
 
                           <p className="text-sm text-muted-foreground mt-3 line-clamp-2">{job.description}</p>
 
-                          <div className="flex items-center justify-between mt-4">
-                            <div className="flex items-center space-x-2">
+                          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mt-4 gap-3">
+                            <div className="flex items-center flex-wrap gap-2">
                               <Badge variant={job.featured ? "default" : "secondary"}>{job.category}</Badge>
                               {job.featured && <Badge className="bg-accent text-accent-foreground">Featured</Badge>}
                             </div>
-                            <div className="flex items-center space-x-4">
-                              <span className="text-sm text-muted-foreground">{job.applicants} applicants</span>
-                              <Button asChild>
+                            <div className="flex items-center gap-2 sm:gap-4 w-full sm:w-auto">
+                              <span className="text-sm text-muted-foreground flex-shrink-0">{job.applicants} applicants</span>
+                              <Button asChild className="flex-shrink-0">
                                 <Link href={`/jobs/${job.id}`}>View Details</Link>
                               </Button>
                             </div>
@@ -343,20 +342,20 @@ export default function JobsPage() {
             </div>
 
             {/* Pagination */}
-            <div className="flex items-center justify-center space-x-2 mt-8">
-              <Button variant="outline" disabled>
+            <div className="flex items-center justify-center flex-wrap gap-2 mt-8">
+              <Button variant="outline" disabled size="sm">
                 Previous
               </Button>
-              <Button variant="outline" className="bg-primary text-primary-foreground">
+              <Button variant="outline" className="bg-primary text-primary-foreground" size="sm">
                 1
               </Button>
-              <Button variant="outline" className="bg-transparent">
+              <Button variant="outline" className="bg-transparent" size="sm">
                 2
               </Button>
-              <Button variant="outline" className="bg-transparent">
+              <Button variant="outline" className="bg-transparent" size="sm">
                 3
               </Button>
-              <Button variant="outline" className="bg-transparent">
+              <Button variant="outline" className="bg-transparent" size="sm">
                 Next
               </Button>
             </div>

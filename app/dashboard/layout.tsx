@@ -14,7 +14,7 @@ export default function DashboardLayout({
       <div className="min-h-screen flex flex-col">
         <Header />
         <main className="flex-1 pt-24">
-          <div className="container mx-auto px-4 py-8">
+          <div className="container mx-auto px-4 sm:px-6 py-8">
             <div className="flex gap-6">
               <DashboardSidebar />
               <div className="flex-1 min-w-0">

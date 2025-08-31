@@ -16,7 +16,7 @@ export function PageLayout({
   children,
   showBackButton = true,
   mainClassName = "",
-  containerClassName = "container mx-auto px-4 py-8"
+  containerClassName = "container mx-auto px-4 sm:px-6 py-8"
 }: PageLayoutProps) {
   const pathname = usePathname()
   const isHomePage = pathname === "/"
