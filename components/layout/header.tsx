@@ -30,6 +30,22 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  // Lock background scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      const { style } = document.documentElement
+      const prevOverflow = style.overflow
+      const prevPaddingRight = style.paddingRight
+      const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth
+      style.overflow = "hidden"
+      if (scrollBarWidth > 0) style.paddingRight = `${scrollBarWidth}px`
+      return () => {
+        style.overflow = prevOverflow
+        style.paddingRight = prevPaddingRight
+      }
+    }
+  }, [isOpen])
+
   const navigation = [
     { name: "Jobs", href: "/jobs" },
     { name: "Deals", href: "/deals" },
@@ -188,24 +204,31 @@ export function Header() {
               {/* Mobile Menu */}
               <Sheet open={isOpen} onOpenChange={setIsOpen}>
                 <SheetTrigger asChild>
-                  <Button variant="ghost" size="sm" className="md:hidden h-8 w-8 p-0 text-foreground hover:bg-accent hover:text-accent-foreground">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    aria-label="Open menu"
+                    aria-haspopup="dialog"
+                    aria-expanded={isOpen}
+                    className="md:hidden h-8 w-8 p-0 text-foreground hover:bg-accent hover:text-accent-foreground"
+                  >
                     <Menu className="h-4 w-4" />
                   </Button>
                 </SheetTrigger>
                 <SheetContent
                   side="right"
                   style={glassStyle}
-                  className="w-80 sm:w-96 bg-white/6 dark:bg-gray-900/30 backdrop-blur-xl border-l border-white/10 dark:border-gray-800/30"
+                  className="w-[86vw] max-w-[24rem] bg-background/90 backdrop-blur-xl border-l border-border/60 overflow-y-auto overscroll-contain focus:outline-none rounded-l-2xl"
                 >
-                  <div className="flex flex-col space-y-6 mt-8">
+                  <div className="flex flex-col space-y-6 mt-[max(1.5rem,env(safe-area-inset-top))] pb-[max(1rem,env(safe-area-inset-bottom))] px-2">
                     {/* Mobile Search */}
                     <div className="space-y-3">
-                      <h3 className="text-sm font-medium text-muted-foreground">Search</h3>
+                      <h3 className="text-sm font-medium text-foreground/80">Search</h3>
                       <Select value={searchType} onValueChange={setSearchType}>
-                        <SelectTrigger className="h-10 bg-transparent border-white/10 dark:border-gray-800/30 text-foreground">
+                        <SelectTrigger className="h-10 bg-card/90 border-border/60 text-foreground">
                           <SelectValue />
                         </SelectTrigger>
-                        <SelectContent className="bg-white/6 dark:bg-gray-900/30 backdrop-blur-md border border-white/10 dark:border-gray-800/30">
+                        <SelectContent className="bg-background/95 backdrop-blur-md border border-border/60">
                           <SelectItem value="jobs">Jobs</SelectItem>
                           <SelectItem value="deals">Deals</SelectItem>
                         </SelectContent>
@@ -214,7 +237,7 @@ export function Header() {
                         <Input
                           type="search"
                           placeholder={`Search ${searchType}...`}
-                          className="h-10 pr-10 bg-transparent border-white/10 dark:border-gray-800/30 text-foreground placeholder:text-muted-foreground"
+                          className="h-10 pr-10 bg-card/90 border-border/60 text-foreground placeholder:text-foreground/60"
                         />
                         <Button size="sm" className="absolute right-1 top-1 h-8 w-8" variant="ghost">
                           <Search className="h-4 w-4" />
@@ -224,13 +247,13 @@ export function Header() {
 
                     {/* Mobile Navigation */}
                     <div className="space-y-3">
-                      <h3 className="text-sm font-medium text-muted-foreground">Navigation</h3>
+                      <h3 className="text-sm font-medium text-foreground/80">Navigation</h3>
                       <nav className="flex flex-col space-y-1">
                         {navigation.map((item) => (
                           <Link
                             key={item.name}
                             href={item.href}
-                            className="flex items-center px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-accent/50 rounded-lg transition-colors min-h-[44px]"
+                            className="flex items-center px-3 py-2 text-sm font-medium text-foreground hover:text-foreground hover:bg-accent/50 rounded-lg transition-colors min-h-[44px]"
                             onClick={() => setIsOpen(false)}
                           >
                             {item.name}
