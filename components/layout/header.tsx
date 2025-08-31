@@ -63,18 +63,20 @@ export function Header() {
           <div className="flex h-14 sm:h-16 items-center justify-between px-4 sm:px-6">
             {/* Logo - Mobile First */}
             <Link href="/" className="flex items-center space-x-2 flex-shrink-0 relative z-10">
-              <div className="w-16 h-16">
-                <Image
-                  src="/logo.png"
-                  width={68}
-                  height={68}
-                  alt="Logo"
-                />
-              </div>
-              <span className="text-lg sm:text-xl font-bold tracking-tighter hidden xs:block text-foreground">
-                WIRsuchen
-              </span>
-            </Link>
+  <div className="w-10 h-10 flex items-center justify-center overflow-hidden">
+    <Image
+      src="/logo.png"
+      alt="Logo"
+      width={40}
+      height={40}
+      className="object-contain"
+    />
+  </div>
+  <span className="text-lg sm:text-xl font-bold tracking-tighter hidden xs:block text-foreground">
+    WIRsuchen
+  </span>
+</Link>
+
 
             {/* Mobile Search Toggle */}
             <div className="flex items-center space-x-2 sm:hidden">
