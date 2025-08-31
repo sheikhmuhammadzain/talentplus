@@ -54,7 +54,7 @@ export default function SavedPage() {
   ]
 
   return (
-    <PageLayout containerClassName="">
+    <PageLayout containerClassName="container mx-auto px-4 py-8">
       <div className="mb-8">
         <h1 className="text-3xl font-bold mb-2">Saved Items</h1>
         <p className="text-muted-foreground">Keep track of your favorite jobs and deals in one place.</p>
