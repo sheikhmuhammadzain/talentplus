@@ -1,5 +1,7 @@
-import { PageLayout } from "@/components/layout/page-layout"
+import { Header } from "@/components/layout/header"
+import { Footer } from "@/components/layout/footer"
 import { useState } from "react"
+import React from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -141,8 +143,11 @@ This laptop combines power, portability, and stunning display quality in one pre
   const bestStore = deal.stores.reduce((best, store) => (store.price < best.price ? store : best), deal.stores[0])
 
   return (
-    <PageLayout>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div className="min-h-screen">
+      <Header />
+
+      <main className="container mx-auto px-4 py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main Content */}
           <div className="lg:col-span-2">
             <Card>
@@ -452,7 +457,9 @@ This laptop combines power, portability, and stunning display quality in one pre
             </Card>
           </div>
         </div>
-      </div>
-    </PageLayout>
+      </main>
+
+      <Footer />
+    </div>
   )
 }
