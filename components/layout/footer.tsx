@@ -41,7 +41,7 @@ export function Footer() {
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground font-bold">
                 T+
               </div>
-              <span className="text-xl font-bold">TalentPlus</span>
+              <span className="text-xl font-bold">WIRsuchen</span>
             </Link>
             <p className="text-sm text-muted-foreground mb-4 max-w-sm">
               Your ultimate platform for finding jobs, comparing deals, and managing your career growth.
@@ -147,7 +147,7 @@ export function Footer() {
 
         {/* Copyright */}
         <div className="border-t mt-8 pt-8 text-center">
-          <p className="text-sm text-muted-foreground">© 2024 TalentPlus. All rights reserved.</p>
+          <p className="text-sm text-muted-foreground">© 2024 WIRsuchen. All rights reserved.</p>
         </div>
       </div>
     </footer>

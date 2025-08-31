@@ -39,7 +39,7 @@ export default function AboutPage() {
         <div className="container mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">Connecting Talent with Opportunity</h1>
           <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-            TalentPlus is more than just a job board. We're building the future of work by connecting talented
+            WIRsuchen is more than just a job board. We're building the future of work by connecting talented
             individuals with amazing opportunities while helping everyone save money on the things they love.
           </p>
           <Link href="/jobs">
@@ -167,10 +167,10 @@ export default function AboutPage() {
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-bold mb-6">Ready to Get Started?</h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Join thousands of professionals who have found their dream jobs and amazing deals through TalentPlus.
+            Join thousands of professionals who have found their dream jobs and amazing deals through WIRsuchen.
           </p>
           <Link href="/register">
-            <Button size="lg">Join TalentPlus Today</Button>
+            <Button size="lg">Join WIRsuchen Today</Button>
           </Link>
         </div>
       </section>

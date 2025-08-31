@@ -228,7 +228,7 @@ export default function HomePage() {
                         </div>
                       </div>
                     </div>
-                    <Button className="w-full mt-4">
+                    <Button className="w-full mt-4" >
                       <ShoppingBag className="h-4 w-4 mr-2" />
                       View Deal
                     </Button>
@@ -282,7 +282,7 @@ export default function HomePage() {
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Get Started?</h2>
             <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-              Join thousands of professionals who trust TalentPlus for their career growth and savings.
+              Join thousands of professionals who trust WIRsuchen for their career growth and savings.
             </p>
             <div className="flex flex-col md:flex-row gap-4 justify-center">
               <Button size="lg" variant="secondary">

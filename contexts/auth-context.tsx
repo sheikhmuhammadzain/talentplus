@@ -26,7 +26,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     // Check for stored user data on mount
-    const storedUser = localStorage.getItem("talentplus_user")
+    const storedUser = localStorage.getItem("wirsuchen_user")
     if (storedUser) {
       setUser(JSON.parse(storedUser))
     }
@@ -35,12 +35,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const login = async (userData: User) => {
     setUser(userData)
-    localStorage.setItem("talentplus_user", JSON.stringify(userData))
+    localStorage.setItem("wirsuchen_user", JSON.stringify(userData))
   }
 
   const logout = () => {
     setUser(null)
-    localStorage.removeItem("talentplus_user")
+    localStorage.removeItem("wirsuchen_user")
   }
 
   return <AuthContext.Provider value={{ user, login, logout, isLoading }}>{children}</AuthContext.Provider>

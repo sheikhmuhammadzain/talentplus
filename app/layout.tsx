@@ -11,9 +11,12 @@ const geist = Geist({
 })
 
 export const metadata: Metadata = {
-  title: "TalentPlus - Jobs & Deals Portal",
-  description: "Find jobs, compare deals, and manage your career with TalentPlus",
-  generator: "TalentPlus",
+  title: "WIRsuchen - Jobs & Deals Portal",
+  description: "Find jobs, compare deals, and manage your career with WIRsuchen",
+  generator: "WIRsuchen",
+  icons: {
+    icon: "/favicon.ico", // public folder ka path
+  },
 }
 
 export default function RootLayout({

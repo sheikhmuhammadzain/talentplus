@@ -29,10 +29,10 @@ export default function LoginPage() {
 
     try {
       // Mock authentication - in real app, this would call an API
-      if (email === "admin@talentplus.com" && password === "admin123") {
+      if (email === "admin@wirsuchen.com" && password === "admin123") {
         await login({
           id: "1",
-          email: "admin@talentplus.com",
+          email: "admin@wirsuchen.com",
           name: "John Doe",
           company: "TechCorp Inc.",
           role: "admin",
@@ -128,7 +128,7 @@ export default function LoginPage() {
             </form>
 
             <div className="mt-6">
-              <div className="text-center text-sm text-gray-600">Demo credentials: admin@talentplus.com / admin123</div>
+              <div className="text-center text-sm text-gray-600">Demo credentials: admin@wirsuchen.com / admin123</div>
             </div>
           </CardContent>
         </Card>

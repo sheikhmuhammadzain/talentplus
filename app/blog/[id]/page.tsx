@@ -269,7 +269,7 @@ Good luck!`,
       image: "/blog-interview-tips.jpg",
       featured: false,
       views: 1834,
-      metaTitle: "10 Essential Interview Tips to Land Your Dream Job | TalentPlus",
+      metaTitle: "10 Essential Interview Tips to Land Your Dream Job | WIRsuchen",
       metaDescription:
         "Master job interviews with these 10 proven tips. Learn how to prepare, what to wear, body language secrets, and follow-up strategies that will help you succeed.",
     },
@@ -283,7 +283,7 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
 
   if (!post) {
     return {
-      title: "Post Not Found | TalentPlus Blog",
+      title: "Post Not Found | WIRsuchen Blog",
       description: "The requested blog post could not be found.",
     }
   }

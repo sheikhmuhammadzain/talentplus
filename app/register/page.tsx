@@ -105,7 +105,7 @@ export default function RegisterPage() {
 
         <Card>
           <CardHeader>
-            <CardTitle>Join TalentPlus</CardTitle>
+            <CardTitle>Join WIRsuchen</CardTitle>
             <CardDescription>Fill out the form below to create your account</CardDescription>
           </CardHeader>
           <CardContent>
@@ -266,7 +266,7 @@ export default function RegisterPage() {
               </div>
 
               <div className="flex items-center space-x-2">
-                <Checkbox id="terms" checked={acceptTerms} onCheckedChange={setAcceptTerms} />
+                <Checkbox id="terms" checked={acceptTerms} onCheckedChange={(checked) => setAcceptTerms(checked === true)} />
                 <Label htmlFor="terms" className="text-sm">
                   I agree to the{" "}
                   <Link href="/terms" className="text-red-600 hover:text-red-500">

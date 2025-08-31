@@ -164,7 +164,7 @@ export default function BlogPage() {
       <main className="container mx-auto px-4 py-8">
         {/* Header Section */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4">TalentPlus Blog</h1>
+          <h1 className="text-4xl font-bold mb-4">WIRsuchen Blog</h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Stay updated with the latest insights on careers, recruitment, market trends, and exclusive deals.
           </p>

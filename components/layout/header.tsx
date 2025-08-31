@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Search, Menu, User, Heart, ShoppingBag, LogOut } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -62,11 +63,16 @@ export function Header() {
           <div className="flex h-14 sm:h-16 items-center justify-between px-4 sm:px-6">
             {/* Logo - Mobile First */}
             <Link href="/" className="flex items-center space-x-2 flex-shrink-0 relative z-10">
-              <div className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground font-bold text-sm">
-                T+
+              <div className="w-16 h-16">
+                <Image
+                  src="/logo.png"
+                  width={68}
+                  height={68}
+                  alt="Logo"
+                />
               </div>
               <span className="text-lg sm:text-xl font-bold tracking-tighter hidden xs:block text-foreground">
-                TalentPlus
+                WIRsuchen
               </span>
             </Link>
 
