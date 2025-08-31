@@ -1,8 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Header } from "@/components/layout/header"
-import { Footer } from "@/components/layout/footer"
+import { PageLayout } from "@/components/layout/page-layout"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -10,7 +9,7 @@ import { Badge } from "@/components/ui/badge"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Separator } from "@/components/ui/separator"
-import { Search, MapPin, Briefcase, Clock, Euro, Filter, Heart, Building2 } from "lucide-react"
+import { Search, MapPin, Briefcase, Clock, Euro, Filter, Heart, Building2, ArrowLeft } from "lucide-react"
 import Link from "next/link"
 
 export default function JobsPage() {
@@ -129,10 +128,17 @@ export default function JobsPage() {
   }
 
   return (
-    <div className="min-h-screen">
-      <Header />
+    <PageLayout containerClassName="">
+        {/* Back Button */}
+        <div className="mb-6">
+          <Button variant="ghost" asChild className="p-0 h-auto font-normal text-muted-foreground hover:text-foreground">
+            <Link href="/" className="inline-flex items-center">
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back to Home
+            </Link>
+          </Button>
+        </div>
 
-      <main className="container mx-auto px-4 py-8">
         {/* Search Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold mb-4">Find Your Dream Job</h1>
@@ -365,9 +371,6 @@ export default function JobsPage() {
             </div>
           </div>
         </div>
-      </main>
-
-      <Footer />
-    </div>
+    </PageLayout>
   )
 }

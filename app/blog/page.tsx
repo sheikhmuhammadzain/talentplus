@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Search, Calendar, Clock, ArrowRight, TrendingUp } from "lucide-react"
+import { Search, Calendar, Clock, ArrowRight, TrendingUp, ArrowLeft } from "lucide-react"
 import Link from "next/link"
 
 export default function BlogPage() {
@@ -162,6 +162,16 @@ export default function BlogPage() {
       <Header />
 
       <main className="container mx-auto px-4 py-8">
+        {/* Back Button */}
+        <div className="mb-6">
+          <Button variant="ghost" asChild className="p-0 h-auto font-normal text-muted-foreground hover:text-foreground">
+            <Link href="/" className="inline-flex items-center">
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back to Home
+            </Link>
+          </Button>
+        </div>
+
         {/* Header Section */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold mb-4">WIRsuchen Blog</h1>

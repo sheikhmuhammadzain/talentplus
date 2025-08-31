@@ -19,6 +19,7 @@ import {
   Calendar,
   Sparkles,
   ExternalLink,
+  ArrowLeft,
 } from "lucide-react"
 import Link from "next/link"
 
@@ -135,6 +136,16 @@ Ready to make your mark in tech? Apply now and let's build something amazing tog
       <Header />
 
       <main className="container mx-auto px-4 py-8">
+        {/* Back Button */}
+        <div className="mb-6">
+          <Button variant="ghost" asChild className="p-0 h-auto font-normal text-muted-foreground hover:text-foreground">
+            <Link href="/jobs" className="inline-flex items-center">
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back to Jobs
+            </Link>
+          </Button>
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main Content */}
           <div className="lg:col-span-2">
