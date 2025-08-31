@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
+import { PageLayout } from "@/components/layout/page-layout"
 import Link from "next/link"
 
 export default function SupportPage() {
@@ -82,7 +83,7 @@ export default function SupportPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-background">
+    <PageLayout containerClassName="">
       {/* Hero Section */}
       <section className="py-20 px-4">
         <div className="container mx-auto text-center">
@@ -232,6 +233,6 @@ export default function SupportPage() {
           </Link>
         </div>
       </section>
-    </div>
+    </PageLayout>
   )
 }

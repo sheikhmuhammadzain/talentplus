@@ -1,5 +1,4 @@
-import { Header } from "@/components/layout/header"
-import { Footer } from "@/components/layout/footer"
+import { PageLayout } from "@/components/layout/page-layout"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -93,10 +92,8 @@ export default function HomePage() {
   ]
 
   return (
-    <div className="min-h-screen">
-      <Header />
-
-      <main className="pt-20 sm:pt-24">
+    <PageLayout showBackButton={false} containerClassName="">
+      <main className="pt-12 sm:pt-16">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-background to-muted/50 py-20">
           <div className="container mx-auto px-4 text-center">
@@ -301,8 +298,6 @@ export default function HomePage() {
           </div>
         </section>
       </main>
-
-      <Footer />
-    </div>
+    </PageLayout>
   )
 }

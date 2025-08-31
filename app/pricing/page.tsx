@@ -2,6 +2,7 @@ import { Check } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { PageLayout } from "@/components/layout/page-layout"
 
 export default function PricingPage() {
   const plans = [
@@ -56,7 +57,7 @@ export default function PricingPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-background">
+    <PageLayout containerClassName="">
       {/* Hero Section */}
       <section className="py-20 px-4">
         <div className="container mx-auto text-center">
@@ -137,6 +138,6 @@ export default function PricingPage() {
           </div>
         </div>
       </section>
-    </div>
+    </PageLayout>
   )
 }

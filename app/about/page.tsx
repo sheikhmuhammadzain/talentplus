@@ -1,6 +1,7 @@
 import { Users, Target, Award, Globe } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { PageLayout } from "@/components/layout/page-layout"
 import Link from "next/link"
 
 export default function AboutPage() {
@@ -33,7 +34,7 @@ export default function AboutPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-background">
+    <PageLayout containerClassName="">
       {/* Hero Section */}
       <section className="py-20 px-4">
         <div className="container mx-auto text-center">
@@ -174,6 +175,6 @@ export default function AboutPage() {
           </Link>
         </div>
       </section>
-    </div>
+    </PageLayout>
   )
 }
