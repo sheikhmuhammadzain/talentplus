@@ -12,6 +12,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Separator } from "@/components/ui/separator"
 import { Search, Filter, Heart, Star, ShoppingBag, TrendingDown, Grid3X3, List } from "lucide-react"
 import Link from "next/link"
+import { filterDeals, sortDeals } from "@/lib/filters"
 
 export default function DealsPage() {
   const [searchQuery, setSearchQuery] = useState("")
@@ -158,22 +159,22 @@ export default function DealsPage() {
     }
   }
 
-  const sortedDeals = [...deals].sort((a, b) => {
-    switch (sortBy) {
-      case "price-low":
-        return a.currentPrice - b.currentPrice
-      case "price-high":
-        return b.currentPrice - a.currentPrice
-      case "discount":
-        return b.discount - a.discount
-      case "rating":
-        return b.rating - a.rating
-      case "newest":
-        return b.id - a.id
-      default:
-        return b.discount - a.discount
-    }
+  const filteredDeals = filterDeals(deals, {
+    searchQuery,
+    categories: selectedCategories,
+    brands: selectedBrands,
+    priceRange,
   })
+
+  const sortedDeals = sortDeals(filteredDeals, sortBy)
+
+  const clearAll = () => {
+    setSearchQuery("")
+    setSortBy("best-deal")
+    setSelectedCategories([])
+    setSelectedBrands([])
+    setPriceRange("")
+  }
 
   return (
     <div className="min-h-screen">
@@ -293,7 +294,7 @@ export default function DealsPage() {
                   </Select>
                 </div>
 
-                <Button variant="outline" className="w-full bg-transparent">
+                <Button variant="outline" className="w-full bg-transparent" onClick={clearAll}>
                   Clear All Filters
                 </Button>
               </CardContent>

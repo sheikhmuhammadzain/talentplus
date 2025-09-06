@@ -52,18 +52,50 @@ export function Footer() {
             <p className="text-sm text-muted-foreground mb-4 max-w-sm">
               Your ultimate platform for finding jobs, comparing deals, and managing your career growth.
             </p>
-            <div className="flex space-x-2">
-              <Button variant="ghost" size="sm">
-                <Facebook className="h-4 w-4" />
+            <div className="flex items-center space-x-3">
+              <Button variant="ghost" size="icon" className="rounded-full hover:text-primary" asChild>
+                <Link
+                  href="https://facebook.com"
+                  aria-label="Visit us on Facebook"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Facebook className="size-7" aria-hidden="true" />
+                  <span className="sr-only">Facebook</span>
+                </Link>
               </Button>
-              <Button variant="ghost" size="sm">
-                <Twitter className="h-4 w-4" />
+              <Button variant="ghost" size="icon" className="rounded-full hover:text-primary" asChild>
+                <Link
+                  href="https://twitter.com"
+                  aria-label="Visit us on X (Twitter)"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Twitter className="size-7" aria-hidden="true" />
+                  <span className="sr-only">X (Twitter)</span>
+                </Link>
               </Button>
-              <Button variant="ghost" size="sm">
-                <Instagram className="h-4 w-4" />
+              <Button variant="ghost" size="icon" className="rounded-full hover:text-primary" asChild>
+                <Link
+                  href="https://instagram.com"
+                  aria-label="Visit us on Instagram"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Instagram className="size-7" aria-hidden="true" />
+                  <span className="sr-only">Instagram</span>
+                </Link>
               </Button>
-              <Button variant="ghost" size="sm">
-                <Linkedin className="h-4 w-4" />
+              <Button variant="ghost" size="icon" className="rounded-full hover:text-primary" asChild>
+                <Link
+                  href="https://linkedin.com"
+                  aria-label="Visit us on LinkedIn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Linkedin className="size-7" aria-hidden="true" />
+                  <span className="sr-only">LinkedIn</span>
+                </Link>
               </Button>
             </div>
           </div>

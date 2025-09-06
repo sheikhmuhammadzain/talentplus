@@ -3,8 +3,9 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Search, Briefcase, ShoppingBag, TrendingUp, Users, Star, ArrowRight } from "lucide-react"
+import { Search, MapPin, ShoppingBag, TrendingUp, Users, Star, ArrowRight } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 export default function HomePage() {
   const featuredJobs = [
@@ -46,6 +47,7 @@ export default function HomePage() {
       discount: "12%",
       store: "TechStore",
       rating: 4.8,
+      image: "https://myshop.pk/pub/media/catalog/product/cache/26f8091d81cea4b38d820a1d1a4f62be/m/a/macbook-air-m2-myshop-pk_6__1_1.jpg",
     },
     {
       id: 2,
@@ -55,6 +57,7 @@ export default function HomePage() {
       discount: "8%",
       store: "MobileShop",
       rating: 4.9,
+      image: "/iphone-15-pro-deal.png",
     },
     {
       id: 3,
@@ -64,6 +67,7 @@ export default function HomePage() {
       discount: "25%",
       store: "AudioWorld",
       rating: 4.7,
+      image: "/sony-headphones-deal.png",
     },
   ]
 
@@ -93,34 +97,62 @@ export default function HomePage() {
 
   return (
     <PageLayout showBackButton={false} containerClassName="">
-      <main className=" sm:pt-6">
+      <>
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-background to-muted/50 py-10">
+        <section className="bg-gradient-to-br from-background to-muted/50 py-8 sm:py-12 md:py-16">
           <div className="container mx-auto px-4 text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold leading-tight mb-4 sm:mb-6">
               Find Your Next
               <span className="text-accent"> Opportunity</span>
             </h1>
-            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-6 sm:mb-8 max-w-2xl mx-auto">
               Discover thousands of jobs and compare the best deals all in one place. Your career and savings start
               here.
             </p>
 
             {/* Hero Search */}
-            <div className="max-w-2xl mx-auto mb-8">
-              <div className="flex flex-col md:flex-row gap-4">
+            <div className="max-w-2xl mx-auto mb-6 sm:mb-8">
+              <div className="flex flex-col md:flex-row gap-3 sm:gap-4">
                 <div className="flex-1">
-                  <Input type="search" placeholder="Search jobs, companies, or deals..." className="h-12 text-lg" />
+                  <Input type="search" placeholder="Search jobs, companies, or deals..." className="h-11 sm:h-12 text-base sm:text-lg" />
                 </div>
-                <Button size="lg" className="h-12 px-8">
+                <Button size="lg" className="h-11 sm:h-12 px-6 sm:px-8 w-full md:w-auto">
                   <Search className="h-5 w-5 mr-2" />
                   Search
                 </Button>
               </div>
             </div>
 
+            {/* Quick Location Links */}
+            <div className="max-w-2xl mx-auto mb-2 sm:mb-4">
+              <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-sm">
+                <span className="text-muted-foreground">Popular:</span>
+                <Link
+                  href="/jobs?location=Germany"
+                  className="inline-flex items-center rounded-full border px-3 py-1 bg-background hover:bg-accent/50 transition-colors"
+                >
+                  <MapPin className="h-4 w-4 mr-1 text-red-500" />
+                  Jobs in Germany
+                </Link>
+                <Link
+                  href="/jobs?location=Austria"
+                  className="inline-flex items-center rounded-full border px-3 py-1 bg-background hover:bg-accent/50 transition-colors"
+                >
+                  <MapPin className="h-4 w-4 mr-1 text-red-500" />
+                  Jobs in Austria
+                </Link>
+                <Link
+                  href="/jobs?location=Switzerland"
+                  className="inline-flex items-center rounded-full border px-3 py-1 bg-background hover:bg-accent/50 transition-colors"
+                >
+                  <MapPin className="h-4 w-4 mr-1 text-red-500" />
+                  Jobs in Switzerland
+                </Link>
+              </div>
+            </div>
+
             {/* Quick Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 max-w-3xl mx-auto">
               <div className="text-center">
                 <div className="text-3xl font-bold text-accent">50K+</div>
                 <div className="text-sm text-muted-foreground">Active Jobs</div>
@@ -138,11 +170,11 @@ export default function HomePage() {
         </section>
 
         {/* Featured Jobs Section */}
-        <section className="py-16">
+        <section className="py-10 sm:py-12 md:py-16">
           <div className="container mx-auto px-4">
-            <div className="flex items-center justify-between mb-8">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6 sm:mb-8">
               <div>
-                <h2 className="text-3xl font-bold mb-2">Featured Jobs</h2>
+                <h2 className="text-2xl sm:text-3xl font-bold mb-1 sm:mb-2">Featured Jobs</h2>
                 <p className="text-muted-foreground">Hand-picked opportunities from top companies</p>
               </div>
               <Button variant="outline" asChild>
@@ -153,7 +185,7 @@ export default function HomePage() {
               </Button>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {featuredJobs.map((job) => (
                 <Card key={job.id} className="hover:shadow-lg transition-shadow">
                   <CardHeader>
@@ -168,7 +200,7 @@ export default function HomePage() {
                   <CardContent>
                     <div className="space-y-2">
                       <div className="flex items-center text-sm text-muted-foreground">
-                        <Briefcase className="h-4 w-4 mr-2" />
+                        <MapPin className="h-4 w-4 mr-2 text-red-500" />
                         {job.location}
                       </div>
                       <div className="flex items-center justify-between">
@@ -176,8 +208,8 @@ export default function HomePage() {
                         <Badge variant="outline">{job.type}</Badge>
                       </div>
                     </div>
-                    <Button className="w-full mt-4 bg-transparent" variant="outline">
-                      View Details
+                    <Button className="w-full mt-4 bg-transparent" variant="outline" asChild>
+                      <Link href={`/jobs/${job.id}`}>View Details</Link>
                     </Button>
                   </CardContent>
                 </Card>
@@ -187,11 +219,11 @@ export default function HomePage() {
         </section>
 
         {/* Top Deals Section */}
-        <section className="py-16 bg-muted/50">
+        <section className="py-10 sm:py-12 md:py-16 bg-muted/50">
           <div className="container mx-auto px-4">
-            <div className="flex items-center justify-between mb-8">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6 sm:mb-8">
               <div>
-                <h2 className="text-3xl font-bold mb-2">Top Deals</h2>
+                <h2 className="text-2xl sm:text-3xl font-bold mb-1 sm:mb-2">Top Deals</h2>
                 <p className="text-muted-foreground">Best prices from trusted retailers</p>
               </div>
               <Button variant="outline" asChild>
@@ -202,7 +234,7 @@ export default function HomePage() {
               </Button>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {topDeals.map((deal) => (
                 <Card key={deal.id} className="hover:shadow-lg transition-shadow">
                   <CardHeader>
@@ -212,6 +244,19 @@ export default function HomePage() {
                     </div>
                   </CardHeader>
                   <CardContent>
+                    {/* Deal Image */}
+                    {deal.image && (
+                      <div className="mb-4">
+                        <Image
+                          src={deal.image}
+                          alt={`${deal.title} image`}
+                          width={640}
+                          height={360}
+                          className="w-full h-44 sm:h-40 object-cover rounded-md"
+                          priority={false}
+                        />
+                      </div>
+                    )}
                     <div className="space-y-3">
                       <div className="flex items-center space-x-2">
                         <span className="text-2xl font-bold text-accent">{deal.currentPrice}</span>
@@ -225,9 +270,11 @@ export default function HomePage() {
                         </div>
                       </div>
                     </div>
-                    <Button className="w-full mt-4" >
-                      <ShoppingBag className="h-4 w-4 mr-2" />
-                      View Deal
+                    <Button className="w-full mt-4" asChild>
+                      <Link href={`/deals/${deal.id}`}>
+                        <ShoppingBag className="h-4 w-4 mr-2" />
+                        View Deal
+                      </Link>
                     </Button>
                   </CardContent>
                 </Card>
@@ -237,11 +284,11 @@ export default function HomePage() {
         </section>
 
         {/* Blog Section */}
-        <section className="py-16">
+        <section className="py-10 sm:py-12 md:py-16">
           <div className="container mx-auto px-4">
-            <div className="flex items-center justify-between mb-8">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6 sm:mb-8">
               <div>
-                <h2 className="text-3xl font-bold mb-2">Latest Insights</h2>
+                <h2 className="text-2xl sm:text-3xl font-bold mb-1 sm:mb-2">Latest Insights</h2>
                 <p className="text-muted-foreground">Career tips, market trends, and more</p>
               </div>
               <Button variant="outline" asChild>
@@ -252,7 +299,7 @@ export default function HomePage() {
               </Button>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {blogPosts.map((post) => (
                 <Card key={post.id} className="hover:shadow-lg transition-shadow">
                   <CardHeader>
@@ -264,8 +311,8 @@ export default function HomePage() {
                     <CardDescription>{post.excerpt}</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <Button variant="outline" className="w-full bg-transparent">
-                      Read More
+                    <Button variant="outline" className="w-full bg-transparent" asChild>
+                      <Link href={`/blog/${post.id}`}>Read More</Link>
                     </Button>
                   </CardContent>
                 </Card>
@@ -275,29 +322,34 @@ export default function HomePage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-primary text-primary-foreground">
+        <section className="py-12 sm:py-16 md:py-20 bg-primary text-primary-foreground">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Get Started?</h2>
             <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
               Join thousands of professionals who trust WIRsuchen for their career growth and savings.
             </p>
             <div className="flex flex-col md:flex-row gap-4 justify-center">
-              <Button size="lg" variant="secondary">
-                <Users className="h-5 w-5 mr-2" />
-                Find Jobs
+              <Button size="lg" variant="secondary" className="w-full md:w-auto" asChild>
+                <Link href="/jobs">
+                  <Users className="h-5 w-5 mr-2" />
+                  Find Jobs
+                </Link>
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary bg-transparent"
+                className="w-full md:w-auto border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary bg-transparent"
+                asChild
               >
-                <TrendingUp className="h-5 w-5 mr-2" />
-                Browse Deals
+                <Link href="/deals">
+                  <TrendingUp className="h-5 w-5 mr-2" />
+                  Browse Deals
+                </Link>
               </Button>
             </div>
           </div>
         </section>
-      </main>
+      </>
     </PageLayout>
   )
 }

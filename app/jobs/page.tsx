@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { PageLayout } from "@/components/layout/page-layout"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -11,8 +11,11 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Separator } from "@/components/ui/separator"
 import { Search, MapPin, Briefcase, Clock, Euro, Filter, Heart, Building2, ArrowLeft } from "lucide-react"
 import Link from "next/link"
+import { useSearchParams } from "next/navigation"
+import { filterJobs, sortJobs, type JobItem } from "@/lib/filters"
 
 export default function JobsPage() {
+  const searchParams = useSearchParams()
   const [searchQuery, setSearchQuery] = useState("")
   const [location, setLocation] = useState("")
   const [sortBy, setSortBy] = useState("newest")
@@ -24,7 +27,7 @@ export default function JobsPage() {
 
   const jobTypes = ["Full-time", "Part-time", "Contract", "Freelance", "Internship"]
 
-  const jobs = [
+  const jobs: JobItem[] = [
     {
       id: 1,
       title: "Senior Frontend Developer",
@@ -111,6 +114,14 @@ export default function JobsPage() {
     },
   ]
 
+  // Initialize location from query param and keep it in state
+  useEffect(() => {
+    const loc = searchParams.get("location")
+    if (loc) {
+      setLocation(loc)
+    }
+  }, [searchParams])
+
   const handleCategoryChange = (category: string, checked: boolean) => {
     if (checked) {
       setSelectedCategories([...selectedCategories, category])
@@ -125,6 +136,26 @@ export default function JobsPage() {
     } else {
       setSelectedJobTypes(selectedJobTypes.filter((t) => t !== jobType))
     }
+  }
+
+  // Filter jobs by location if provided
+  const filteredJobs = filterJobs(jobs, {
+    searchQuery,
+    location,
+    categories: selectedCategories,
+    jobTypes: selectedJobTypes,
+    salaryRange,
+  })
+
+  const sortedJobs = sortJobs(filteredJobs, sortBy, searchQuery)
+
+  const clearAll = () => {
+    setSearchQuery("")
+    setLocation("")
+    setSelectedCategories([])
+    setSelectedJobTypes([])
+    setSalaryRange("")
+    setSortBy("newest")
   }
 
   return (
@@ -253,7 +284,7 @@ export default function JobsPage() {
                   </Select>
                 </div>
 
-                <Button variant="outline" className="w-full bg-transparent">
+                <Button variant="outline" className="w-full bg-transparent" onClick={clearAll}>
                   Clear All Filters
                 </Button>
               </CardContent>
@@ -264,7 +295,7 @@ export default function JobsPage() {
           <div className="flex-1">
             <div className="flex items-center justify-between mb-6">
               <p className="text-muted-foreground">
-                Showing <span className="font-semibold">{jobs.length}</span> jobs
+                Showing <span className="font-semibold">{sortedJobs.length}</span> jobs
               </p>
               <Button variant="outline" asChild>
                 <Link href="/jobs/post">Post a Job</Link>
@@ -272,7 +303,7 @@ export default function JobsPage() {
             </div>
 
             <div className="space-y-4">
-              {jobs.map((job) => (
+              {sortedJobs.map((job) => (
                 <Card key={job.id} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between">
@@ -302,7 +333,7 @@ export default function JobsPage() {
 
                           <div className="flex flex-wrap items-center gap-2 sm:gap-4 mt-3 text-sm text-muted-foreground">
                             <div className="flex items-center min-w-0">
-                              <MapPin className="h-4 w-4 mr-1 flex-shrink-0" />
+                              <MapPin className="h-4 w-4 mr-1 flex-shrink-0 text-red-500" />
                               <span className="truncate">{job.location}</span>
                             </div>
                             <div className="flex items-center min-w-0">
