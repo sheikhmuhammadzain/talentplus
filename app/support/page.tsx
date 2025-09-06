@@ -1,85 +1,50 @@
-import { MessageCircle, Mail, Phone, Clock, Search, FileText, Users, Zap } from "lucide-react"
+ import { MessageCircle, Mail, Phone, Clock } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Badge } from "@/components/ui/badge"
 import { PageLayout } from "@/components/layout/page-layout"
 import Link from "next/link"
 
 export default function SupportPage() {
   const contactMethods = [
     {
-      icon: MessageCircle,
-      title: "Live Chat",
-      description: "Get instant help from our support team",
-      availability: "24/7",
-      action: "Start Chat",
+      icon: Mail,
+      title: "Email",
+      description: "Best for detailed questions",
+      availability: "Replies within 24–48h",
+      action: "Email me",
       primary: true,
+      link: "mailto:hello@yourdomain.com",
     },
     {
-      icon: Mail,
-      title: "Email Support",
-      description: "Send us a detailed message",
-      availability: "Response within 24h",
-      action: "Send Email",
+      icon: MessageCircle,
+      title: "WhatsApp",
+      description: "Quick questions and updates",
+      availability: "Weekdays 9am–6pm",
+      action: "Message on WhatsApp",
       primary: false,
+      link: "https://wa.me/00000000000",
+      external: true,
     },
     {
       icon: Phone,
-      title: "Phone Support",
-      description: "Speak directly with our team",
-      availability: "Mon-Fri 9AM-6PM EST",
-      action: "Call Now",
+      title: "Book a 15‑min call",
+      description: "Perfect for clarifying scope",
+      availability: "By appointment",
+      action: "Open calendar",
       primary: false,
+      link: "https://calendly.com/your-handle/intro-call",
+      external: true,
     },
   ]
-
-  const faqCategories = [
-    {
-      icon: Users,
-      title: "Account & Profile",
-      count: 12,
-      questions: [
-        "How do I create an account?",
-        "How to update my profile information?",
-        "Can I delete my account?",
-        "How to change my password?",
-      ],
-    },
-    {
-      icon: Search,
-      title: "Job Search",
-      count: 18,
-      questions: [
-        "How do job alerts work?",
-        "Can I save job listings?",
-        "How to apply for jobs?",
-        "What are the search filters?",
-      ],
-    },
-    {
-      icon: Zap,
-      title: "Deals & Offers",
-      count: 8,
-      questions: [
-        "How do I find the best deals?",
-        "Are the prices accurate?",
-        "How do affiliate links work?",
-        "Can I get price alerts?",
-      ],
-    },
-    {
-      icon: FileText,
-      title: "Billing & Plans",
-      count: 15,
-      questions: [
-        "How to upgrade my plan?",
-        "What payment methods are accepted?",
-        "Can I get a refund?",
-        "How to download invoices?",
-      ],
-    },
+  const faqs = [
+    { q: "How fast do you reply?", a: "I usually reply within 24 hours on weekdays (48 hours max during busy periods)." },
+    { q: "Do you work on weekends?", a: "I monitor for urgent issues, but detailed replies may wait until Monday." },
+    { q: "What’s the best way to reach you?", a: "Email for detailed requests; WhatsApp for quick updates. Use the form below if you prefer." },
+    { q: "Can we schedule a call?", a: "Yes—use the calendar link above to pick a time that works for you." },
+    { q: "Do you offer ongoing support?", a: "Yes, I offer flexible retainers and on‑demand support for ongoing work." },
+    { q: "Where are you based?", a: "I’m based in your city here and work with clients worldwide across time zones." },
   ]
 
   return (
@@ -87,20 +52,17 @@ export default function SupportPage() {
       {/* Hero Section */}
       <section className="py-20 px-4">
         <div className="container mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">How Can We Help You ?</h1>
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">How can I help?</h1>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Get the support you need, when you need it. Our team is here to help you succeed.
+            I’m a solo entrepreneur—so you’ll always talk to me directly. No bots. No ticket hoops.
           </p>
-
-          {/* Search Bar */}
-          <div className="max-w-2xl mx-auto relative">
-            <Input
-              type="search"
-              placeholder="Search for help articles, guides, and FAQs..."
-              className="pl-12 h-12 text-lg"
-            />
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-            <Button className="absolute right-2 top-2 h-8">Search</Button>
+          <div className="flex items-center justify-center gap-3">
+            <Link href="mailto:hello@yourdomain.com">
+              <Button>Email me</Button>
+            </Link>
+            <Link href="#contact-form">
+              <Button variant="outline">Go to contact form</Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -122,9 +84,17 @@ export default function SupportPage() {
                     <Clock className="h-4 w-4 mr-2 text-muted-foreground" />
                     <span className="text-sm text-muted-foreground">{method.availability}</span>
                   </div>
-                  <Button className="w-full" variant={method.primary ? "default" : "outline"}>
-                    {method.action}
-                  </Button>
+                  {"link" in method && method.link ? (
+                    <Link href={method.link as string} target={(method as any).external ? "_blank" : undefined}>
+                      <Button className="w-full" variant={method.primary ? "default" : "outline"}>
+                        {method.action}
+                      </Button>
+                    </Link>
+                  ) : (
+                    <Button className="w-full" variant={method.primary ? "default" : "outline"}>
+                      {method.action}
+                    </Button>
+                  )}
                 </CardContent>
               </Card>
             ))}
@@ -132,105 +102,68 @@ export default function SupportPage() {
         </div>
       </section>
 
-      {/* FAQ Categories */}
+      {/* FAQs */}
       <section className="py-20 px-4">
-        <div className="container mx-auto">
+        <div className="container mx-auto max-w-4xl">
           <h2 className="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
-          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {faqCategories.map((category, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center">
-                      <category.icon className="h-6 w-6 mr-3 text-primary" />
-                      <CardTitle className="text-lg">{category.title}</CardTitle>
-                    </div>
-                    <Badge variant="secondary">{category.count} articles</Badge>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2">
-                    {category.questions.map((question, qIndex) => (
-                      <li key={qIndex}>
-                        <Link
-                          href="#"
-                          className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                        >
-                          {question}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                  <Button variant="ghost" className="mt-4 p-0 h-auto text-primary">
-                    View all articles →
-                  </Button>
-                </CardContent>
-              </Card>
+          <div className="grid md:grid-cols-2 gap-6">
+            {faqs.map((item, idx) => (
+              <div key={idx} className="p-5 border rounded-lg hover:shadow-sm transition-shadow">
+                <p className="font-medium">{item.q}</p>
+                <p className="text-sm text-muted-foreground mt-2">{item.a}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Contact Form */}
-      <section className="py-20 px-4 bg-muted/50">
+      <section id="contact-form" className="py-20 px-4 bg-muted/50">
         <div className="container mx-auto max-w-2xl">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Still Need Help?</h2>
+            <h2 className="text-3xl font-bold mb-4">Prefer to write it out?</h2>
             <p className="text-muted-foreground">
-              Can't find what you're looking for? Send us a message and we'll get back to you within 24 hours.
+              Send me a message and I’ll get back to you within 24–48 hours.
             </p>
           </div>
 
           <Card>
             <CardHeader>
-              <CardTitle>Contact Form</CardTitle>
+              <CardTitle>Contact form</CardTitle>
               <CardDescription>
-                Fill out the form below and our support team will get back to you as soon as possible.
+                Share as much detail as you like—screenshots and links help me move faster.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label className="text-sm font-medium mb-2 block">First Name</label>
-                  <Input placeholder="Enter your first name" />
-                </div>
-                <div>
-                  <label className="text-sm font-medium mb-2 block">Last Name</label>
-                  <Input placeholder="Enter your last name" />
-                </div>
+              <div>
+                <label className="text-sm font-medium mb-2 block">Name</label>
+                <Input placeholder="Your name" />
               </div>
               <div>
                 <label className="text-sm font-medium mb-2 block">Email</label>
-                <Input type="email" placeholder="Enter your email address" />
-              </div>
-              <div>
-                <label className="text-sm font-medium mb-2 block">Subject</label>
-                <Input placeholder="What's this about?" />
+                <Input type="email" placeholder="you@example.com" />
               </div>
               <div>
                 <label className="text-sm font-medium mb-2 block">Message</label>
-                <Textarea placeholder="Describe your issue or question in detail..." rows={6} />
+                <Textarea placeholder="How can I help?" rows={6} />
               </div>
-              <Button className="w-full">Send Message</Button>
+              <Button className="w-full">Send message</Button>
             </CardContent>
           </Card>
         </div>
       </section>
 
-      {/* Status Page */}
+      {/* Availability */}
       <section className="py-20 px-4">
         <div className="container mx-auto text-center">
-          <h2 className="text-2xl font-bold mb-4">System Status</h2>
+          <h2 className="text-2xl font-bold mb-4">Availability</h2>
           <p className="text-muted-foreground mb-6">
-            Check the current status of our services and any ongoing maintenance.
+            I aim to reply within 24–48 hours on weekdays. During launches, it may take a bit longer.
           </p>
-          <div className="flex items-center justify-center space-x-2 mb-6">
+          <div className="flex items-center justify-center space-x-2">
             <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-            <span className="text-sm font-medium">All systems operational</span>
+            <span className="text-sm font-medium">Currently accepting new clients</span>
           </div>
-          <Link href="#">
-            <Button variant="outline">View Status Page</Button>
-          </Link>
         </div>
       </section>
     </PageLayout>
