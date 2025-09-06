@@ -7,6 +7,8 @@ import { Search, MapPin, ShoppingBag, TrendingUp, Users, Star, ArrowRight } from
 import Link from "next/link"
 import Image from "next/image"
 import CountUp from "@/components/count-up"
+import RotatingText from "@/components/rotating-text"
+import { ShimmerButton } from "@/components/magicui/shimmer-button"
 
 export default function HomePage() {
   const featuredJobs = [
@@ -103,8 +105,19 @@ export default function HomePage() {
         <section className="bg-gradient-to-br from-background to-muted/50 py-8 sm:py-12 md:py-16">
           <div className="container mx-auto px-4 text-center">
             <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold leading-tight mb-4 sm:mb-6">
-              Find Your Next
-              <span className="text-accent"> Opportunity</span>
+              Find Your Next{" "}
+              <RotatingText
+                className="text-accent"
+                words={[
+                  "Opportunity",
+                  "Job",
+                  "Role",
+                  "Deal",
+                  "Offer",
+                  "Career",
+                  "Savings",
+                ]}
+              />
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-6 sm:mb-8 max-w-2xl mx-auto">
               Discover thousands of jobs and compare the best deals all in one place. Your career and savings start
@@ -117,10 +130,14 @@ export default function HomePage() {
                 <div className="flex-1">
                   <Input type="search" placeholder="Search jobs, companies, or deals..." className="h-11 sm:h-12 text-base sm:text-lg" />
                 </div>
-                <Button size="lg" className="h-11 sm:h-12 px-6 sm:px-8 w-full md:w-auto">
+                <ShimmerButton
+                  shimmerColor="#ffffff"
+                  background="var(--primary)"
+                  className="h-11 sm:h-12 px-6 sm:px-8 w-full md:w-auto text-primary-foreground"
+                >
                   <Search className="h-5 w-5 mr-2" />
                   Search
-                </Button>
+                </ShimmerButton>
               </div>
             </div>
 
