@@ -9,6 +9,7 @@ import Image from "next/image"
 import CountUp from "@/components/count-up"
 import RotatingText from "@/components/rotating-text"
 import { ShimmerButton } from "@/components/magicui/shimmer-button"
+import { DotPattern } from "@/components/magicui/dot-pattern"
 
 export default function HomePage() {
   const featuredJobs = [
@@ -102,7 +103,16 @@ export default function HomePage() {
     <PageLayout showBackButton={false} containerClassName="">
       <>
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-background to-muted/50 py-8 sm:py-12 md:py-16">
+        <section className="relative overflow-hidden bg-gradient-to-br from-background to-muted/50 py-8 sm:py-12 md:py-16">
+          {/* Dot pattern background */}
+          <DotPattern
+            width={24}
+            height={24}
+            cx={1}
+            cy={1}
+            cr={1}
+            className="text-neutral-400/30 [mask-image:radial-gradient(120%_60%_at_50%_0%,#000_20%,transparent_80%)]"
+          />
           <div className="container mx-auto px-4 text-center">
             <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold leading-tight mb-4 sm:mb-6">
               Find Your Next{" "}
