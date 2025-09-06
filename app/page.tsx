@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge"
 import { Search, MapPin, ShoppingBag, TrendingUp, Users, Star, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import CountUp from "@/components/count-up"
 
 export default function HomePage() {
   const featuredJobs = [
@@ -154,15 +155,21 @@ export default function HomePage() {
             {/* Quick Stats */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 max-w-3xl mx-auto">
               <div className="text-center">
-                <div className="text-3xl font-bold text-accent">50K+</div>
+                <div className="text-3xl font-bold text-accent">
+                  <CountUp to={50} from={0} duration={1.2} />K+
+                </div>
                 <div className="text-sm text-muted-foreground">Active Jobs</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-accent">100K+</div>
+                <div className="text-3xl font-bold text-accent">
+                  <CountUp to={100} from={0} duration={1.2} delay={0.1} />K+
+                </div>
                 <div className="text-sm text-muted-foreground">Daily Deals</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-accent">25K+</div>
+                <div className="text-3xl font-bold text-accent">
+                  <CountUp to={25} from={0} duration={1.2} delay={0.2} />K+
+                </div>
                 <div className="text-sm text-muted-foreground">Happy Users</div>
               </div>
             </div>
