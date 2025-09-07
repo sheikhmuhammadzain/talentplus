@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Heart, Search, Star, ShoppingBag, Trash2, ExternalLink } from "lucide-react"
 import Link from "next/link"
+import { formatEuro } from "@/lib/utils"
 
 export function MyDeals() {
   const [searchQuery, setSearchQuery] = useState("")
@@ -116,7 +117,7 @@ export function MyDeals() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-muted-foreground">Total Savings</p>
-                <p className="text-2xl font-bold text-green-600">€{totalSavings}</p>
+                <p className="text-2xl font-bold text-green-600">{formatEuro(totalSavings)}</p>
               </div>
               <ShoppingBag className="h-8 w-8 text-green-600" />
             </div>
@@ -207,8 +208,8 @@ export function MyDeals() {
                     </div>
 
                     <div className="flex items-center space-x-2 mt-3">
-                      <span className="text-2xl font-bold text-accent">€{deal.currentPrice}</span>
-                      <span className="text-sm text-muted-foreground line-through">€{deal.originalPrice}</span>
+                      <span className="text-2xl font-bold text-accent">{formatEuro(deal.currentPrice)}</span>
+                      <span className="text-sm text-muted-foreground line-through">{formatEuro(deal.originalPrice)}</span>
                     </div>
 
                     <p className="text-xs text-muted-foreground mt-2">

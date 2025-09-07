@@ -22,6 +22,7 @@ import {
   ArrowLeft,
 } from "lucide-react"
 import Link from "next/link"
+import { formatEuro, formatEuroText } from "@/lib/utils"
 
 export default function DealDetailPage({ params }: { params: { id: string } }) {
   const [selectedStore, setSelectedStore] = useState(0)
@@ -221,12 +222,12 @@ This laptop combines power, portability, and stunning display quality in one pre
                     <div className="space-y-4">
                       <div>
                         <div className="flex items-center space-x-3">
-                          <span className="text-3xl font-bold text-accent">€{deal.currentPrice}</span>
-                          <span className="text-lg text-muted-foreground line-through">€{deal.originalPrice}</span>
+                          <span className="text-3xl font-bold text-accent">{formatEuro(deal.currentPrice)}</span>
+                          <span className="text-lg text-muted-foreground line-through">{formatEuro(deal.originalPrice)}</span>
                         </div>
                         <div className="flex items-center mt-2 text-green-600">
                           <TrendingDown className="h-4 w-4 mr-1" />
-                          <span className="font-medium">You save €{deal.savings}</span>
+                          <span className="font-medium">You save {formatEuro(deal.savings)}</span>
                         </div>
                       </div>
 
@@ -326,16 +327,16 @@ This laptop combines power, portability, and stunning display quality in one pre
                         </TableCell>
                         <TableCell>
                           <div>
-                            <span className="font-bold text-accent">€{store.price}</span>
+                            <span className="font-bold text-accent">{formatEuro(store.price)}</span>
                             {store.originalPrice > store.price && (
-                              <div className="text-sm text-muted-foreground line-through">€{store.originalPrice}</div>
+                              <div className="text-sm text-muted-foreground line-through">{formatEuro(store.originalPrice)}</div>
                             )}
                           </div>
                         </TableCell>
                         <TableCell>
                           <div className="flex items-center">
                             <Truck className="h-4 w-4 mr-1 text-muted-foreground" />
-                            {store.shipping}
+                            {formatEuroText(store.shipping as string)}
                           </div>
                         </TableCell>
                         <TableCell>{store.shippingTime}</TableCell>
@@ -399,7 +400,7 @@ This laptop combines power, portability, and stunning display quality in one pre
                 <Button className="w-full" size="lg" asChild>
                   <Link href={bestStore.url} target="_blank">
                     <ShoppingBag className="h-4 w-4 mr-2" />
-                    Buy Now - €{bestStore.price}
+                    Buy Now - {formatEuro(bestStore.price)}
                   </Link>
                 </Button>
                 <Button variant="outline" className="w-full bg-transparent">
@@ -453,7 +454,7 @@ This laptop combines power, portability, and stunning display quality in one pre
                           </h4>
                         </Link>
                         <div className="flex items-center justify-between mt-1">
-                          <span className="text-sm font-bold text-accent">€{relatedDeal.currentPrice}</span>
+                          <span className="text-sm font-bold text-accent">{formatEuro(relatedDeal.currentPrice)}</span>
                           <Badge variant="outline" className="text-xs">
                             -{relatedDeal.discount}%
                           </Badge>

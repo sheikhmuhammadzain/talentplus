@@ -224,7 +224,7 @@ export async function generateInvoicePDF(invoice: InvoiceData): Promise<void> {
         <tbody>
           <tr>
             <td>${invoice.description}</td>
-            <td class="text-right">€${invoice.amount.toFixed(2)}</td>
+            <td class="text-right">${invoice.amount.toFixed(2)} €</td>
           </tr>
         </tbody>
       </table>
@@ -232,15 +232,15 @@ export async function generateInvoicePDF(invoice: InvoiceData): Promise<void> {
       <div class="totals">
         <div class="totals-row">
           <span>Subtotal:</span>
-          <span>€${invoice.amount.toFixed(2)}</span>
+          <span>${invoice.amount.toFixed(2)} €</span>
         </div>
         <div class="totals-row">
           <span>VAT (${invoice.vatRate}%):</span>
-          <span>€${invoice.vatAmount.toFixed(2)}</span>
+          <span>${invoice.vatAmount.toFixed(2)} €</span>
         </div>
         <div class="totals-row">
           <span>Total:</span>
-          <span>€${(invoice.amount + invoice.vatAmount).toFixed(2)}</span>
+          <span>${(invoice.amount + invoice.vatAmount).toFixed(2)} €</span>
         </div>
       </div>
 

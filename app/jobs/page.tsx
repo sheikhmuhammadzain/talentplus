@@ -13,6 +13,7 @@ import { Search, MapPin, Briefcase, Clock, Euro, Filter, Heart, Building2, Arrow
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import { filterJobs, sortJobs, type JobItem } from "@/lib/filters"
+import { formatEuroText } from "@/lib/utils"
 
 export default function JobsPage() {
   const searchParams = useSearchParams()
@@ -275,11 +276,11 @@ export default function JobsPage() {
                       <SelectValue placeholder="Select range" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="0-30k">€0 - €30,000</SelectItem>
-                      <SelectItem value="30k-50k">€30,000 - €50,000</SelectItem>
-                      <SelectItem value="50k-70k">€50,000 - €70,000</SelectItem>
-                      <SelectItem value="70k-100k">€70,000 - €100,000</SelectItem>
-                      <SelectItem value="100k+">€100,000+</SelectItem>
+                      <SelectItem value="0-30k">{formatEuroText("0-30k")}</SelectItem>
+                      <SelectItem value="30k-50k">{formatEuroText("30k-50k")}</SelectItem>
+                      <SelectItem value="50k-70k">{formatEuroText("50k-70k")}</SelectItem>
+                      <SelectItem value="70k-100k">{formatEuroText("70k-100k")}</SelectItem>
+                      <SelectItem value="100k+">{formatEuroText("100k+")}</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -338,7 +339,7 @@ export default function JobsPage() {
                             </div>
                             <div className="flex items-center min-w-0">
                               <Euro className="h-4 w-4 mr-1 flex-shrink-0" />
-                              <span className="truncate">{job.salary}</span>
+                              <span className="truncate">{formatEuroText(job.salary)}</span>
                             </div>
                             <div className="flex items-center">
                               <Briefcase className="h-4 w-4 mr-1 flex-shrink-0" />

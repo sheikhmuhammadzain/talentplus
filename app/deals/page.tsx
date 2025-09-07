@@ -13,6 +13,7 @@ import { Separator } from "@/components/ui/separator"
 import { Search, Filter, Heart, Star, ShoppingBag, TrendingDown, Grid3X3, List } from "lucide-react"
 import Link from "next/link"
 import { filterDeals, sortDeals } from "@/lib/filters"
+import { formatEuro, formatEuroText } from "@/lib/utils"
 
 export default function DealsPage() {
   const [searchQuery, setSearchQuery] = useState("")
@@ -285,11 +286,11 @@ export default function DealsPage() {
                       <SelectValue placeholder="Select range" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="0-100">€0 - €100</SelectItem>
-                      <SelectItem value="100-500">€100 - €500</SelectItem>
-                      <SelectItem value="500-1000">€500 - €1,000</SelectItem>
-                      <SelectItem value="1000-2000">€1,000 - €2,000</SelectItem>
-                      <SelectItem value="2000+">€2,000+</SelectItem>
+                      <SelectItem value="0-100">{formatEuro(0)} - {formatEuro(100)}</SelectItem>
+                      <SelectItem value="100-500">{formatEuro(100)} - {formatEuro(500)}</SelectItem>
+                      <SelectItem value="500-1000">{formatEuro(500)} - {formatEuro(1000)}</SelectItem>
+                      <SelectItem value="1000-2000">{formatEuro(1000)} - {formatEuro(2000)}</SelectItem>
+                      <SelectItem value="2000+">{formatEuro(2000)}+</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -369,14 +370,14 @@ export default function DealsPage() {
                         </div>
 
                         <div className="flex items-center space-x-2 mt-3">
-                          <span className="text-2xl font-bold text-accent">€{deal.currentPrice}</span>
-                          <span className="text-sm text-muted-foreground line-through">€{deal.originalPrice}</span>
+                          <span className="text-2xl font-bold text-accent">{formatEuro(deal.currentPrice)}</span>
+                          <span className="text-sm text-muted-foreground line-through">{formatEuro(deal.originalPrice)}</span>
                         </div>
 
                         <div className="flex items-center justify-between mt-3">
                           <div className="flex items-center text-sm text-green-600">
                             <TrendingDown className="h-4 w-4 mr-1" />
-                            Save €{deal.savings}
+                            Save {formatEuro(deal.savings)}
                           </div>
                           <span className="text-sm text-muted-foreground">{deal.stores.length} stores</span>
                         </div>
@@ -426,15 +427,13 @@ export default function DealsPage() {
                           <div className="flex items-center justify-between mt-4">
                             <div className="flex items-center space-x-4">
                               <div className="flex items-center space-x-2">
-                                <span className="text-2xl font-bold text-accent">€{deal.currentPrice}</span>
-                                <span className="text-sm text-muted-foreground line-through">
-                                  €{deal.originalPrice}
-                                </span>
+                                <span className="text-2xl font-bold text-accent">{formatEuro(deal.currentPrice)}</span>
+                                <span className="text-sm text-muted-foreground line-through">{formatEuro(deal.originalPrice)}</span>
                                 <Badge className="bg-accent text-accent-foreground">-{deal.discount}%</Badge>
                               </div>
                               <div className="flex items-center text-sm text-green-600">
                                 <TrendingDown className="h-4 w-4 mr-1" />
-                                Save €{deal.savings}
+                                Save {formatEuro(deal.savings)}
                               </div>
                             </div>
                             <div className="flex items-center space-x-4">

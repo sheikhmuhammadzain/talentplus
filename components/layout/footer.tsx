@@ -47,7 +47,6 @@ export function Footer() {
                   alt="Logo"
                 />
               </div>
-              <span className="text-xl font-bold">WIRsuchen</span>
             </Link>
             <p className="text-sm text-muted-foreground mb-4 max-w-sm">
               Your ultimate platform for finding jobs, comparing deals, and managing your career growth.

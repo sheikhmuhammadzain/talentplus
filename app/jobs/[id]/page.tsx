@@ -22,6 +22,7 @@ import {
   ArrowLeft,
 } from "lucide-react"
 import Link from "next/link"
+import { formatEuroText } from "@/lib/utils"
 
 export default function JobDetailPage({ params }: { params: { id: string } }) {
   const [isImproving, setIsImproving] = useState(false)
@@ -171,7 +172,7 @@ Ready to make your mark in tech? Apply now and let's build something amazing tog
                         </div>
                         <div className="flex items-center">
                           <Euro className="h-4 w-4 mr-1" />
-                          {job.salary}
+                          {formatEuroText(job.salary)}
                         </div>
                         <div className="flex items-center">
                           <Briefcase className="h-4 w-4 mr-1" />
@@ -318,7 +319,7 @@ Ready to make your mark in tech? Apply now and let's build something amazing tog
                     <p className="text-sm text-muted-foreground">{relatedJob.company}</p>
                     <div className="flex items-center justify-between mt-2">
                       <span className="text-sm text-muted-foreground">{relatedJob.location}</span>
-                      <span className="text-sm font-medium text-accent">{relatedJob.salary}</span>
+                      <span className="text-sm font-medium text-accent">{formatEuroText(relatedJob.salary)}</span>
                     </div>
                   </div>
                 ))}

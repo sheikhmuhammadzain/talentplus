@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Briefcase, ShoppingBag, FileText, TrendingUp, Eye, Users } from "lucide-react"
 import Link from "next/link"
+import { formatEuroText } from "@/lib/utils"
 
 export function DashboardOverview() {
   const stats = [
@@ -179,8 +180,8 @@ export function DashboardOverview() {
                   <div className="flex-1">
                     <h4 className="font-medium">{deal.title}</h4>
                     <div className="flex items-center space-x-2 mt-1">
-                      <span className="text-lg font-bold text-accent">{deal.price}</span>
-                      <span className="text-sm text-muted-foreground line-through">{deal.originalPrice}</span>
+                      <span className="text-lg font-bold text-accent">{formatEuroText(deal.price)}</span>
+                      <span className="text-sm text-muted-foreground line-through">{formatEuroText(deal.originalPrice)}</span>
                       <Badge className="bg-accent text-accent-foreground">-{deal.discount}</Badge>
                     </div>
                     <p className="text-xs text-muted-foreground mt-1">Saved {deal.saved}</p>

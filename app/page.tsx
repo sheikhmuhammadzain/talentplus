@@ -10,6 +10,7 @@ import CountUp from "@/components/count-up"
 import RotatingText from "@/components/rotating-text"
 import { ShimmerButton } from "@/components/magicui/shimmer-button"
 import { DotPattern } from "@/components/magicui/dot-pattern"
+import { formatEuroText } from "@/lib/utils"
 
 export default function HomePage() {
   const featuredJobs = [
@@ -238,7 +239,7 @@ export default function HomePage() {
                         {job.location}
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="font-semibold text-accent">{job.salary}</span>
+                        <span className="font-semibold text-accent">{formatEuroText(job.salary)}</span>
                         <Badge variant="outline">{job.type}</Badge>
                       </div>
                     </div>
@@ -293,8 +294,8 @@ export default function HomePage() {
                     )}
                     <div className="space-y-3">
                       <div className="flex items-center space-x-2">
-                        <span className="text-2xl font-bold text-accent">{deal.currentPrice}</span>
-                        <span className="text-sm text-muted-foreground line-through">{deal.originalPrice}</span>
+                        <span className="text-2xl font-bold text-accent">{formatEuroText(deal.currentPrice)}</span>
+                        <span className="text-sm text-muted-foreground line-through">{formatEuroText(deal.originalPrice)}</span>
                       </div>
                       <div className="flex items-center justify-between">
                         <span className="text-sm text-muted-foreground">{deal.store}</span>
